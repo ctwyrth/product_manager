@@ -9,7 +9,7 @@ export default props => {
    const handleOnSubmit = (e) => {
       e.preventDefault();
       axios.post('http://localhost:8000/api/products', { title, price, description })
-         .then(res => console.log("This was the response: ", res))
+         .then(res => props.onNewProduct(res.data))
          .catch(err => console.log(err));
       setTitle("");
       setPrice("");

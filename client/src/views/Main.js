@@ -6,6 +6,7 @@ import ProductList from '../components/ProductList';
 export default props => {
    const [ products, setProducts ] = useState([]);
    const [ loaded, setLoaded ] = useState(false);
+   const newProduct = (product) => setProducts([...products, product]);
 
    useEffect(() => {
       axios.get('http://localhost:8000/api/products')
@@ -19,7 +20,7 @@ export default props => {
 
    return (
       <>
-         <ProductForm />
+         <ProductForm onNewProduct={ newProduct } />
          <hr />
          { loaded && <ProductList products={ products } removeFromDom={ removeFromDom } />}
       </>
