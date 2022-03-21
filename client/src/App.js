@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Main from './views/Main';
 import Details from './views/Details';
 import Navigation from './components/Navigation';
+import Update from './views/Update';
 
 const Home = () => {
   return( <div className="container text-center text-warning mt-4"><h1 className="display-6">welcome to the site</h1></div> )
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='product/new' element={<Main />} />
           <Route path='product/:id' element={<Details />} />
+          <Route path='product/edit/:id' element={<Update />} />
           <Route path='*' element={<BadLink />} />
         </Route>
       </Routes>

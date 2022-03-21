@@ -13,11 +13,15 @@ export default props => {
          .catch(error => console.log(error));
    }, []);
 
+   const removeFromDom = productId => {
+      setProducts(products.filter(product => product._id != productId))
+   }
+
    return (
       <>
          <ProductForm />
          <hr />
-         { loaded && <ProductList products={ products } />}
+         { loaded && <ProductList products={ products } removeFromDom={ removeFromDom } />}
       </>
    )
 }
