@@ -1,7 +1,7 @@
 const { Product } = require("../models/pmanager.model");
 
 module.exports.findAllProducts = (req, res) => {
-   Product.find()
+   Product.find({})
       .then(allProducts => res.json(allProducts))
       .catch(err => res.json(err));
 };
@@ -30,21 +30,20 @@ module.exports.deleteAnExistingProduct = (req, res) => {
       .catch(err => res.json(err));
 };
 
+module.exports.index = (request, response) => {
+   response.json({
+      message: "Hello World"
+   });
+}
+
 module.exports.exists = (req, res) => {
    Product.exists({name: req.body.name})
       .then(productExists => {
       if (productExists) {
-         // Promise.reject() will activate the .catch() below.
          return Promise.reject('Error Message Goes Here');
       }
       return Product.create(req.body);
    })
    .then(saveResult => res.json(saveResult))
    .catch(err => res.json(err));
-}
-
-module.exports.index = (request, response) => {
-   response.json({
-      message: "Hello World"
-   });
 }
