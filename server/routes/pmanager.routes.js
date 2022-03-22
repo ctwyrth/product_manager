@@ -7,6 +7,6 @@ module.exports = (app) => {
    app.post("/api/products", ProductController.createNewProduct);
    app.get("/api/products", ProductController.findAllProducts);
    app.get("/api/product/:id", ProductController.findOneSingleProduct);
-   app.put("/api/product/update/:id", ProductController.updateExistingProduct);
-   app.delete("/api/product/delete/:id", ProductController.deleteAnExistingProduct);
+   app.put("/api/product/:id/update", ProductController.updateExistingProduct);
+   app.delete("/api/product/:id/delete", ProductController.deleteAnExistingProduct);
 }

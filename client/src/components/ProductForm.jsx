@@ -1,25 +1,20 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 
 export default props => {
-   const [ title, setTitle ] = useState("");
-   const [ price, setPrice ] = useState("");
-   const [ description, setDescription ] = useState("");
+   const { initialTitle, initialPrice, initialDescription } = props;
+   const [ title, setTitle ] = useState(initialTitle);
+   const [ price, setPrice ] = useState(initialPrice);
+   const [ description, setDescription ] = useState(initialDescription);
 
    const handleOnSubmit = (e) => {
       e.preventDefault();
-      axios.post('http://localhost:8000/api/products', { title, price, description })
-         .then(res => props.onNewProduct(res.data))
-         .catch(err => console.log(err));
-      setTitle("");
-      setPrice("");
-      setDescription("");
+      onSubmitProp({ title, price, description });
    }
 
    return(
       <div className="container my-4">
+         <div className="mb-3 text-center"><span className="h4">Product Manager</span></div>
          <form className="col-6 bg-light border border-dark rounded p-3 mx-auto" onSubmit={ handleOnSubmit }>
-            <div className="mb-3 text-center"><span className="h4">Product Manager</span></div>
             <div className="row mb-3">
                <label htmlFor="title" className="col-sm-3 col-form-label">Title:</label>
                <div className="col-sm-9">

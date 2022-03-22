@@ -15,13 +15,6 @@ export default props => {
          .catch(err => console.log(err));
    }, []);
 
-   const deleteProduct = (productId) => {
-      axios.delete('http://localhost:8000/api/product/delete/' + productId)
-         .then(res => { removeFromDom(productId) })
-         .catch(err => console.log(err));
-         navigate('/product/new');
-   }
-
    return(
       <div className="d-flex justify-content-center mt-5 min-vh-100">
          <div className="col-4 text-center">
@@ -30,7 +23,7 @@ export default props => {
             <p>{product.description}</p>
             <div>
                <Link to={'/product/edit/' + product._id} className="btn btn-sm btn-warning">Edit</Link>
-               <button className="btn btn-sm btn-warning ms-3" onClick={(e) => {deleteProduct(product._id)}} >Remove</button>
+               <DeleteButton productID={product._id} successCallback={() => navigate('/product/new')} />
             </div>
          </div>
       </div>
