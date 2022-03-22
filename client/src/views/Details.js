@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import DeleteButton from '../components/DeleteButton';
 
 export default props => {
    const [ product, setProduct ] = useState({});
    const { id } = useParams();
-   const { removeFromDom } = props;
 
    let navigate = useNavigate();
 

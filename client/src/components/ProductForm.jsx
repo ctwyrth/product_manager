@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default props => {
-   const { initialTitle, initialPrice, initialDescription } = props;
+   const { initialTitle, initialPrice, initialDescription, onSubmitProp } = props;
    const [ title, setTitle ] = useState(initialTitle);
    const [ price, setPrice ] = useState(initialPrice);
    const [ description, setDescription ] = useState(initialDescription);
@@ -9,11 +9,14 @@ export default props => {
    const handleOnSubmit = (e) => {
       e.preventDefault();
       onSubmitProp({ title, price, description });
+      setTitle("");
+      setPrice("");
+      setDescription("");
    }
 
    return(
       <div className="container my-4">
-         <div className="mb-3 text-center"><span className="h4">Product Manager</span></div>
+         { initialTitle === "" ? <div className="mb-3 text-center"><span className="h4">Product Manager:</span></div> : <div className="mb-3 text-center"><span className="h4">Update Product:</span></div> }
          <form className="col-6 bg-light border border-dark rounded p-3 mx-auto" onSubmit={ handleOnSubmit }>
             <div className="row mb-3">
                <label htmlFor="title" className="col-sm-3 col-form-label">Title:</label>

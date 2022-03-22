@@ -18,16 +18,16 @@ export default props => {
    }
 
    const createProduct = product => {
-      axios.post('http://localhost:8000/api/prodiuct', product)
+      axios.post('http://localhost:8000/api/products', product)
          .then(res => {
-            setProducts([...people, res.data]);
+            setProducts([...products, res.data]);
          })
          .catch(err => console.log(err));
    }
 
    return (
       <>
-         <ProductForm onSubmitProp={createProduct} initialFirstName="" initialLastName="" />
+         <ProductForm onSubmitProp={createProduct} initialTitle="" initialPrice="" initialDescription="" />
          <hr />
          { loaded && <ProductList products={ products } removeFromDom={ removeFromDom } />}
       </>

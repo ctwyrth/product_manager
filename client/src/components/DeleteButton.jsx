@@ -4,9 +4,9 @@ import axios from 'axios';
 export default props => {
    const { productId, successCallback } = props;
 
-   const deleteProduct = (e) => {
+   const deleteProduct = e => {
       axios.delete('http://localhost:8000/api/product/' + productId + '/delete')
-         .then(res => { successCallback() })
+         .then(res => { successCallback(); })
          .catch(err => console.log(err));
    }
 

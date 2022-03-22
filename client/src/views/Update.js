@@ -27,7 +27,6 @@ export default props => {
 
    return(
       <div className="container my-4">
-         <div className="mb-3 text-center"><span className="h4">Update the Product:</span></div>
          { loaded &&
             <>
                <ProductForm onSubmitProp={updateProduct} initialTitle={product.title} initialPrice={product.price} initialDescription={product.description} />
@@ -36,3 +35,5 @@ export default props => {
       </div>
    )
 }
+
+{/* <div className="mb-3 text-center"><span className="h4">Update the Product:</span></div> */}
