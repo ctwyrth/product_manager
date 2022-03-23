@@ -20,9 +20,10 @@ export default props => {
    return(
       <div className="container mb-3 text-center">
          <h4>All Products:</h4>
-         {props.products.map((product, idx) => { 
-            return <div className="col-3 my-3 mx-auto d-flex justify-content-between" key={idx}><span className="fw-bold">{product.title}</span><div><Link to={ `/product/${product._id}` } className="btn btn-sm btn-warning">Details</Link><DeleteButton productId={product._id} successCallback={() => removeFromDom(product._id)} /></div></div>
-            })
+         { products &&
+            products.map((product, idx) => { 
+               return <div className="col-3 my-3 mx-auto d-flex justify-content-between" key={idx}><span className="fw-bold">{product.title}</span><div><Link to={ `/product/${product._id}` } className="btn btn-sm btn-warning">Details</Link><DeleteButton productId={product._id} successCallback={() => removeFromDom(product._id)} /></div></div>
+               })
          }
       </div>
    )
